@@ -1,15 +1,21 @@
-# Spatial ID OSS Catalog
+# 空間ID OSSカタログ
 
-This site provides an automatically collected catalog of OSS related to
-**Spatial ID**, proposed by IPA.
+本サイトは、IPAが提唱する **空間ID** に関連するオープンソースソフトウェア（OSS）を、
+GitHub上から自動収集し、一覧として公開するものです。
 
-## Source
-Repositories are collected using GitHub Search API with multiple keyword variants
-(e.g. Japanese full-width / half-width characters).
+## 収集方法について
+本カタログは、GitHub Search API を用いて、
+以下のような表記ゆれを考慮したキーワード検索により自動収集しています。
 
-## Catalog
-- [catalog.json](../data/catalog.json)
+- 空間ID
+- 空間ＩＤ
+- spatialid
+- spatial-id
 
-## Disclaimer
-- This catalog is automatically generated
-- Inclusion does not imply endorsement by IPA
+## カタログ
+- [OSS一覧（catalog.json）](../data/catalog.json)
+
+## 注意事項
+- 本カタログは自動収集により生成されています
+- 掲載されているOSSは、必ずしもIPAによる評価・推奨を意味するものではありません
+- 実験的・研究段階のOSSが含まれる場合があります
