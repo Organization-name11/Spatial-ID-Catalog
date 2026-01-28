@@ -1,19 +1,22 @@
 import requests
 import json
 import os
-os.makedirs("docs/data", exist_ok=True)
 import sys
+
+# 保存先ディレクトリ作成
+os.makedirs("docs/data", exist_ok=True)
 
 API_URL = "https://api.github.com/search/repositories"
 
+# 検索クエリ：README・概要・トピック・リポジトリ名にキーワードを含むもの
 QUERY = (
-    '"空間ID" OR "空間ＩＤ" OR "spatialid" OR "spatial-id" '
-    'in:readme,description,topics'
+    '"空間ID" OR "空間ＩＤ" OR "spatialid" OR "ＳＰＡＴＩＡＬＩＤ" OR '
+    '"spatial-id" OR "ＳＰＡＴＩＡＬーＩＤ" in:readme,description,topics,name'
 )
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
-    "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"
+    "Authorization": f"Bearer {os.environ.get('GITHUB_TOKEN', '')}"
 }
 
 PARAMS = {
@@ -40,7 +43,12 @@ for repo in items:
         "language": repo["language"],
         "stars": repo["stargazers_count"],
         "updated_at": repo["updated_at"],
-        "topics": repo.get("topics", [])
+        "topics": repo.get("topics", []),
+        "license": repo["license"],
+        "fork": repo["fork"],
+        "open_issues_count": repo["open_issues_count"],
+        "watchers_count": repo["watchers_count"],
+        "forks_count": repo["forks_count"]
     })
 
 with open("docs/data/catalog.json", "w", encoding="utf-8") as f:
