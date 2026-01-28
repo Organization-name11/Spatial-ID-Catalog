@@ -60,7 +60,7 @@ GitHub Search APIを用いて自動収集し、表形式で公開するもので
 </table>
 
 <script>
-fetch('../data/catalog.json')
+fetch('data/catalog.json')
   .then(response => response.json())
   .then(data => {
     const tbody = document.querySelector('#catalog tbody');
