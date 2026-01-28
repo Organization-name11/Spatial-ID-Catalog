@@ -6,8 +6,13 @@
     "description": null,
     "language": "Python",
     "stars": 0,
-    "updated_at": "2026-01-28T14:35:54Z",
-    "topics": []
+    "updated_at": "2026-01-28T14:49:56Z",
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "cloudnative-cityos",
@@ -16,8 +21,19 @@
     "description": "AWS Lambda 上で動作する FIWARE Orion 互換の Context Broker",
     "language": "TypeScript",
     "stars": 2,
-    "updated_at": "2026-01-28T12:25:09Z",
-    "topics": []
+    "updated_at": "2026-01-28T14:44:13Z",
+    "topics": [],
+    "license": {
+      "key": "gpl-3.0",
+      "name": "GNU General Public License v3.0",
+      "spdx_id": "GPL-3.0",
+      "url": "https://api.github.com/licenses/gpl-3.0",
+      "node_id": "MDc6TGljZW5zZTk="
+    },
+    "fork": false,
+    "open_issues_count": 4,
+    "watchers_count": 2,
+    "forks_count": 0
   },
   {
     "name": "moqt-js",
@@ -27,7 +43,18 @@
     "language": "TypeScript",
     "stars": 1,
     "updated_at": "2026-01-27T11:48:16Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "fork": false,
+    "open_issues_count": 1,
+    "watchers_count": 1,
+    "forks_count": 0
   },
   {
     "name": "nobodyclimb-fe",
@@ -37,7 +64,12 @@
     "language": "TypeScript",
     "stars": 0,
     "updated_at": "2026-01-28T03:28:07Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 2,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "Kasane",
@@ -47,7 +79,12 @@
     "language": "Rust",
     "stars": 2,
     "updated_at": "2026-01-26T14:15:48Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 1,
+    "watchers_count": 2,
+    "forks_count": 2
   },
   {
     "name": "Kasane-Logic",
@@ -57,7 +94,18 @@
     "language": "Rust",
     "stars": 0,
     "updated_at": "2026-01-26T06:26:00Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 5,
+    "watchers_count": 0,
+    "forks_count": 2
   },
   {
     "name": "red5-moq-pkgr",
@@ -67,7 +115,18 @@
     "language": "Java",
     "stars": 1,
     "updated_at": "2026-01-24T18:03:11Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 1,
+    "forks_count": 0
   },
   {
     "name": "omnitool",
@@ -77,7 +136,18 @@
     "language": "TypeScript",
     "stars": 34,
     "updated_at": "2026-01-25T02:10:24Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 34,
+    "forks_count": 7
   },
   {
     "name": "Spatail_id_viewer_copy",
@@ -87,7 +157,18 @@
     "language": "TypeScript",
     "stars": 0,
     "updated_at": "2026-01-22T03:18:31Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "spatial-id-terrain-voxelizer",
@@ -97,7 +178,18 @@
     "language": "TypeScript",
     "stars": 0,
     "updated_at": "2026-01-18T07:11:49Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "linear-mech-vlms",
@@ -107,7 +199,12 @@
     "language": "Python",
     "stars": 3,
     "updated_at": "2026-01-28T00:57:21Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 3,
+    "forks_count": 0
   },
   {
     "name": "spatialId_view",
@@ -117,7 +214,12 @@
     "language": "JavaScript",
     "stars": 0,
     "updated_at": "2026-01-12T17:48:02Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "Spatial-Tumor-Microenvironment",
@@ -127,7 +229,12 @@
     "language": "Jupyter Notebook",
     "stars": 0,
     "updated_at": "2026-01-11T15:44:49Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "kaori-protocol",
@@ -137,7 +244,18 @@
     "language": "Python",
     "stars": 1,
     "updated_at": "2026-01-20T22:30:12Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 1,
+    "forks_count": 1
   },
   {
     "name": "Madori",
@@ -147,7 +265,12 @@
     "language": "TypeScript",
     "stars": 0,
     "updated_at": "2026-01-08T14:03:07Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 1
   },
   {
     "name": "endocv_2025",
@@ -157,7 +280,12 @@
     "language": "Python",
     "stars": 0,
     "updated_at": "2025-12-31T09:21:37Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "interview",
@@ -167,7 +295,12 @@
     "language": "Java",
     "stars": 0,
     "updated_at": "2025-12-22T13:42:00Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "test-vector-tiles-api",
@@ -177,7 +310,12 @@
     "language": "HTML",
     "stars": 0,
     "updated_at": "2025-12-19T21:59:55Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "Test_SpatialID_API_Demo",
@@ -187,7 +325,18 @@
     "language": "JavaScript",
     "stars": 0,
     "updated_at": "2025-12-16T10:37:44Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "2025-Summer-Tokyo-Studio",
@@ -197,7 +346,12 @@
     "language": "Python",
     "stars": 1,
     "updated_at": "2025-12-13T03:48:14Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 1,
+    "forks_count": 0
   },
   {
     "name": "GOYO-AI",
@@ -207,7 +361,12 @@
     "language": null,
     "stars": 0,
     "updated_at": "2025-12-11T04:06:39Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "CityGML-Data-Convert",
@@ -217,7 +376,12 @@
     "language": "Rust",
     "stars": 0,
     "updated_at": "2025-12-24T08:45:12Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 3,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "cloudflare-mailbox",
@@ -227,7 +391,12 @@
     "language": "TypeScript",
     "stars": 0,
     "updated_at": "2025-12-07T06:45:38Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 1
   },
   {
     "name": "ChenCMD_datapack-linter",
@@ -237,7 +406,18 @@
     "language": "Scala",
     "stars": 0,
     "updated_at": "2025-12-07T05:27:13Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "Toko-elektronik-aisyah",
@@ -247,7 +427,12 @@
     "language": "HTML",
     "stars": 0,
     "updated_at": "2025-11-26T06:16:53Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "Toko-elektronik-asiyah",
@@ -257,7 +442,12 @@
     "language": null,
     "stars": 0,
     "updated_at": "2025-11-26T05:04:58Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "cesium-heatbox",
@@ -267,7 +457,18 @@
     "language": "JavaScript",
     "stars": 5,
     "updated_at": "2026-01-25T05:49:16Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 5,
+    "forks_count": 0
   },
   {
     "name": "disentangle",
@@ -277,7 +478,12 @@
     "language": "Python",
     "stars": 0,
     "updated_at": "2025-12-01T03:39:01Z",
-    "topics": []
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 0,
+    "forks_count": 0
   },
   {
     "name": "ouranos-gex-lib-for-Python",
@@ -287,7 +493,18 @@
     "language": "Python",
     "stars": 14,
     "updated_at": "2025-11-05T01:03:37Z",
-    "topics": []
+    "topics": [],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 0,
+    "watchers_count": 14,
+    "forks_count": 3
   },
   {
     "name": "rove",
@@ -300,6 +517,17 @@
     "topics": [
       "meteorology",
       "quality-control"
-    ]
+    ],
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "fork": false,
+    "open_issues_count": 22,
+    "watchers_count": 8,
+    "forks_count": 1
   }
 ]
