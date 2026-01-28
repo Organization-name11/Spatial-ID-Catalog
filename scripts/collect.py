@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+os.makedirs("docs/data", exist_ok=True)
 import sys
 
 API_URL = "https://api.github.com/search/repositories"
@@ -42,7 +43,7 @@ for repo in items:
         "topics": repo.get("topics", [])
     })
 
-with open("data/catalog.json", "w", encoding="utf-8") as f:
+with open("docs/data/catalog.json", "w", encoding="utf-8") as f:
     json.dump(catalog, f, indent=2, ensure_ascii=False)
 
 print(f"Collected {len(catalog)} repositories")
