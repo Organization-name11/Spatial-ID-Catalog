@@ -32,3 +32,11 @@ jobs:
 
       # 5. 生成された JSON を commit & push
       - name: Commit and push catalog
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add docs/data/catalog.json
+          git diff --cached --quiet || git commit -m "Update OSS catalog"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
