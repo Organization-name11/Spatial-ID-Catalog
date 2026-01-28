@@ -12,12 +12,11 @@
       border-collapse: collapse;
       width: 100%;
       margin-top: 1em;
+      font-size: 14px;
     }
     th, td {
       border: 1px solid #ccc;
       padding: 6px 10px;
-      font-size: 14px;
-      vertical-align: top;
     }
     th {
       background-color: #f5f5f5;
@@ -26,6 +25,12 @@
       color: #0366d6;
       text-decoration: none;
     }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      font-size: 90%;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -33,8 +38,14 @@
 <h1>空間ID OSSカタログ</h1>
 
 <p>
-本ページは、IPAが提唱する<strong>空間ID</strong>に関連するOSSを、
-GitHub Search APIを用いて自動収集し、表形式で公開するものです。
+本ページは、IPAが提唱する <strong>空間ID</strong> に関連するOSSを GitHubから自動収集し、表形式で公開するものです。
+</p>
+
+<h2>対象と検索条件</h2>
+<p>
+GitHub上のリポジトリを対象に、以下のキーワードが <code>リポジトリ名(name)</code>・<code>README</code>・<code>概要(description)</code>・<code>トピック(topics)</code> に含まれるリポジトリを収集しています：
+<code>"空間ID"</code>, <code>"空間ＩＤ"</code>, <code>"spatialid"</code>, <code>"ＳＰＡＴＩＡＬＩＤ"</code>,
+<code>"spatial-id"</code>, <code>"ＳＰＡＴＩＡＬーＩＤ"</code>
 </p>
 
 <h2>注意事項</h2>
@@ -49,10 +60,17 @@ GitHub Search APIを用いて自動収集し、表形式で公開するもので
   <thead>
     <tr>
       <th>リポジトリ</th>
+      <th>URL</th>
       <th>概要</th>
       <th>言語</th>
       <th>★</th>
       <th>最終更新</th>
+      <th>Topics</th>
+      <th>ライセンス</th>
+      <th>Fork</th>
+      <th>Issues</th>
+      <th>Watchers</th>
+      <th>Forks</th>
     </tr>
   </thead>
   <tbody>
@@ -61,52 +79,40 @@ GitHub Search APIを用いて自動収集し、表形式で公開するもので
 </table>
 
 <script>
-(async () => {
-  try {
-    const response = await fetch('data/catalog.json', { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error('catalog.json の取得に失敗しました');
-    }
-
-    const data = await response.json();
-    console.log('catalog.json:', data);
-
-    if (!Array.isArray(data)) {
-      throw new Error('catalog.json が配列ではありません');
-    }
-
+fetch('data/catalog.json')
+  .then(response => {
+    if (!response.ok) throw new Error("catalog.json の取得に失敗しました");
+    return response.json();
+  })
+  .then(data => {
     const tbody = document.querySelector('#catalog tbody');
 
     data.forEach(repo => {
       const tr = document.createElement('tr');
 
       tr.innerHTML = `
-        <td>
-          <a href="${repo.url}" target="_blank" rel="noopener">
-            ${repo.full_name}
-          </a>
-        </td>
-        <td>${repo.description ?? ''}</td>
-        <td>${repo.language ?? ''}</td>
-        <td>${repo.stars ?? 0}</td>
-        <td>${repo.updated_at ? repo.updated_at.slice(0, 10) : ''}</td>
+        <td>${repo.full_name}</td>
+        <td><a href="${repo.url}" target="_blank">リンク</a></td>
+        <td>${repo.description || ''}</td>
+        <td>${repo.language || ''}</td>
+        <td>${repo.stars}</td>
+        <td>${repo.updated_at ? repo.updated_at.slice(0,10) : ''}</td>
+        <td>${repo.topics && repo.topics.length ? repo.topics.join(', ') : ''}</td>
+        <td>${repo.license ? repo.license.name : ''}</td>
+        <td>${repo.fork ? 'Yes' : 'No'}</td>
+        <td>${repo.open_issues_count || 0}</td>
+        <td>${repo.watchers_count || 0}</td>
+        <td>${repo.forks_count || 0}</td>
       `;
 
       tbody.appendChild(tr);
     });
-
-  } catch (e) {
-    console.error(e);
+  })
+  .catch(err => {
+    console.error(err);
     const tbody = document.querySelector('#catalog tbody');
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td colspan="5" style="color:red;">
-        データの読み込みに失敗しました（Console を確認してください）
-      </td>
-    `;
-    tbody.appendChild(tr);
-  }
-})();
+    tbody.innerHTML = `<tr><td colspan="12">データの読み込みに失敗しました（Console を確認してください）</td></tr>`;
+  });
 </script>
 
 </body>
