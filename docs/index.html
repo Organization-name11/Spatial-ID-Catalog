@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>空間ID OSSカタログ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>空間ID OSSカタログ</h1>
+
+<p>
+本ページは、IPAが提唱する<strong>空間ID</strong>に関連するOSSを、
+GitHub Search APIを用いて自動収集し、表形式で公開するものです。
+</p>
+
+<h2>注意事項</h2>
+<ul>
+  <li>本カタログは自動収集により生成されています</li>
+  <li>掲載されているOSSは、IPAによる評価・推奨を意味するものではありません</li>
+</ul>
+
+<h2>OSS一覧</h2>
+
+<table id="catalog">
+  <thead>
+    <tr>
+      <th>リポジトリ</th>
+      <th>概要</th>
+      <th>言語</th>
+      <th>★</th>
+      <th>最終更新</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- JavaScriptで埋める -->
+  </tbody>
+</table>
+
+<script>
+fetch('../data/catalog.json')
+  .then(response => response.json())
+  .then(data => {
+    const tbody = document.querySelector('#catalog tbody');
+
+    data.forEach(repo => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td>
+          <a href="${repo.url}" target="_blank">
+            ${repo.full_name}
+          </a>
+        </td>
+        <td>${repo.description || ''}</td>
+        <td>${repo.language || ''}</td>
+        <td>${repo.stars}</td>
+        <td>${repo.updated_at.slice(0, 10)}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+  });
+</script>
+
+</body>
+</html>
 
