@@ -1,76 +1,83 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Spatial ID OSS Catalog</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Spatial ID Repositories</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+th {
+  cursor: pointer;
+  background: #f0f0f0;
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Spatial ID OSS Catalog</h1>
-  <p>Automatically collected GitHub repositories related to Spatial ID</p>
-</header>
+<h2>Spatial ID OSS List</h2>
 
-<div class="warning">
-  🚧 本ページは工事中です。掲載内容および分類基準は今後変更される可能性があります。
-</div>
+<table id="repoTable">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th onclick="sortTable(1)">Repository</th>
+      <th>Description</th>
+      <th>Topics</th>
+      <th onclick="sortTable(4)">Stars</th>
+    </tr>
+  </thead>
+  <tbody id="repoBody">
+  </tbody>
+</table>
 
-<div class="container">
+<script>
+let repos = [];
 
-  <h2>概要</h2>
-  <p>
-    本ページは、空間IDに関連するオープンソースソフトウェア（OSS）を GitHub から自動収集し、
-    一覧化するカタログサイトです。データは GitHub API を用いて定期的に更新されます。
-  </p>
+// JSON読み込み
+fetch("repos.json")
+  .then(res => res.json())
+  .then(data => {
+    repos = data;
+    renderTable(repos);
+  });
 
-  <h2>検索条件</h2>
-  <p>
-    GitHub 上の公開リポジトリを対象に、以下のキーワードが
-    <strong>リポジトリ名（name）、概要（description）、README、Topics</strong>
-    のいずれかに含まれるものを抽出しています。
-  </p>
-  <p>
-    表記ゆれ（全角・半角、大文字・小文字、ハイフン有無）を考慮し、
-    以下のキーワード群を用いて検索および README の個別確認を行っています。
-  </p>
-  <code>空間ID, 空間ＩＤ, spatial-id, spatialid, SPATIAL-ID, SPATIALID</code>
+function renderTable(data) {
+  const tbody = document.getElementById("repoBody");
+  tbody.innerHTML = "";
 
-  <h2>注意事項</h2>
-  <ul>
-    <li>本カタログは自動収集により生成されています</li>
-    <li>掲載されている OSS は評価・推奨を意味するものではありません</li>
-  </ul>
+  data.forEach((repo, index) => {
+    const tr = document.createElement("tr");
 
-  <h2>OSS 一覧</h2>
+    tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td><a href="${repo.url}" target="_blank">${repo.name}</a></td>
+      <td>${repo.description || ""}</td>
+      <td>${(repo.topics || []).join(", ")}</td>
+      <td>${repo.stars}</td>
+    `;
 
-  <table id="catalog">
-    <thead>
-      <tr>
-        <th>No.</th>
-        <th>Repository</th>
-        <th>URL</th>
-        <th>Description</th>
-        <th>Language</th>
-        <th id="sortStars" style="cursor:pointer">⭐ Stars ▼</th>
-        <th>Updated</th>
-        <th>Topics</th>
-        <th>License</th>
-        <th>Fork</th>
-        <th>Issues</th>
-        <th>Watchers</th>
-        <th>Forks</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    tbody.appendChild(tr);
+  });
+}
 
-</div>
+// Stars or Repository sort
+let asc = true;
+function sortTable(colIndex) {
+  if (colIndex === 4) {
+    repos.sort((a, b) => asc ? a.stars - b.stars : b.stars - a.stars);
+  } else if (colIndex === 1) {
+    repos.sort((a, b) => asc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+  }
+  asc = !asc;
+  renderTable(repos);
+}
+</script>
 
-<footer>
-  Spatial ID OSS Catalog | Automatically generated from GitHub API
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
