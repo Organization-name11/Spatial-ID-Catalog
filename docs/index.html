@@ -13,21 +13,32 @@
 </header>
 
 <div class="warning">
-  🚧 本ページは工事中です。掲載内容・分類基準は今後変更される可能性があります。
+  🚧 本ページは工事中です。掲載内容および分類基準は今後変更される可能性があります。
 </div>
 
 <div class="container">
+
   <h2>概要</h2>
   <p>
-    本ページは、空間IDに関連する OSS を GitHub から自動収集し、一覧化するカタログサイトです。
-    データは GitHub API を用いて定期的に更新されます。
+    本ページは、空間IDに関連するオープンソースソフトウェア（OSS）を GitHub から自動収集し、
+    一覧化するカタログサイトです。データは GitHub API を用いて定期的に更新されます。
   </p>
 
   <h2>検索条件</h2>
   <p>
-    以下のキーワードが <code>リポジトリ名</code>、<code>README</code>、<code>概要</code>、<code>Topics</code> に含まれるものを対象としています：
+    GitHub 上の公開リポジトリを対象に、以下のキーワードが
+    <strong>リポジトリ名（name）、概要（description）、README、Topics</strong>
+    のいずれかに含まれるものを抽出しています。
   </p>
-  <code>空間ID, spatial-id, spatialid</code>
+  <p>
+    表記ゆれ（全角・半角、大文字・小文字、ハイフン有無）を考慮し、
+    以下のキーワード群を用いて検索および README の個別確認を行っています。
+  </p>
+  <code>空間ID, 空間ＩＤ, spatial-id, spatialid, SPATIAL-ID, SPATIALID</code>
+  <p>
+    なお、GitHub Search API による検索結果のみでは README の全文検索精度に制限があるため、
+    各リポジトリの README を個別に取得し、キーワードの存在確認を行っています。
+  </p>
 
   <h2>注意事項</h2>
   <ul>
@@ -44,7 +55,7 @@
         <th>URL</th>
         <th>Description</th>
         <th>Language</th>
-        <th>⭐ Stars</th>
+        <th id="sortStars" style="cursor:pointer">⭐ Stars ▼</th>
         <th>Updated</th>
         <th>Topics</th>
         <th>License</th>
@@ -56,46 +67,13 @@
     </thead>
     <tbody></tbody>
   </table>
+
 </div>
 
 <footer>
   Spatial ID OSS Catalog | Automatically generated from GitHub API
 </footer>
 
-<script>
-fetch('data/catalog.json')
-  .then(response => {
-    if (!response.ok) throw new Error("catalog.json の取得に失敗しました");
-    return response.json();
-  })
-  .then(data => {
-    const tbody = document.querySelector('#catalog tbody');
-
-    data.forEach(repo => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${repo.full_name}</td>
-        <td><a href="${repo.url}" target="_blank">Link</a></td>
-        <td>${repo.description || ''}</td>
-        <td>${repo.language || ''}</td>
-        <td>${repo.stars}</td>
-        <td>${repo.updated_at ? repo.updated_at.slice(0,10) : ''}</td>
-        <td>${repo.topics && repo.topics.length ? repo.topics.join(', ') : ''}</td>
-        <td>${repo.license ? repo.license.name : ''}</td>
-        <td>${repo.fork ? 'Yes' : 'No'}</td>
-        <td>${repo.open_issues_count || 0}</td>
-        <td>${repo.watchers_count || 0}</td>
-        <td>${repo.forks_count || 0}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-  })
-  .catch(err => {
-    console.error(err);
-    const tbody = document.querySelector('#catalog tbody');
-    tbody.innerHTML = `<tr><td colspan="12">データの読み込みに失敗しました</td></tr>`;
-  });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
