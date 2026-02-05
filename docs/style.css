@@ -1,0 +1,98 @@
+/* ===== Global ===== */
+body {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  color: #222;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+/* ===== Warning Banner ===== */
+.warning {
+  background: #fff7cc;
+  border-left: 6px solid #facc15;
+  padding: 12px 20px;
+  margin: 20px 40px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* ===== Main Container ===== */
+.container {
+  margin: 20px 40px;
+  background: white;
+  padding: 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2 {
+  border-left: 6px solid #2563eb;
+  padding-left: 10px;
+}
+
+/* ===== Table ===== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+thead th {
+  background: #111827;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+tbody tr:hover {
+  background: #eef2ff;
+}
+
+/* ===== Code Style ===== */
+code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 90%;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin: 20px;
+}
