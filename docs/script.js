@@ -1,50 +1,53 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import com.fasterxml.jackson.databind.*;
+let repos = [];
+let starsDesc = true;
 
-public class GitHubSpatialIdFetcher {
+/* JSON読み込み */
+fetch("data/catalog.json")
+  .then(res => {
+    if (!res.ok) throw new Error("catalog.json not found");
+    return res.json();
+  })
+  .then(data => {
+    repos = data;
+    renderTable(repos);
+  })
+  .catch(err => {
+    console.error(err);
+    document.querySelector("#catalog tbody").innerHTML =
+      "<tr><td colspan='13'>catalog.json を読み込めませんでした</td></tr>";
+  });
 
-    static final String TOKEN = "YOUR_GITHUB_TOKEN";
-    static final String QUERY = "空間ID OR spatial-id OR spatialid";
+/* 表描画 */
+function renderTable(data) {
+  const tbody = document.querySelector("#catalog tbody");
+  tbody.innerHTML = "";
 
-    public static void main(String[] args) throws Exception {
-        List<Map<String, Object>> results = new ArrayList<>();
+  data.forEach((repo, i) => {
+    const tr = document.createElement("tr");
 
-        String url = "https://api.github.com/search/repositories?q=" +
-                URLEncoder.encode(QUERY, "UTF-8") +
-                "&per_page=100";
+    tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${repo.full_name || ""}</td>
+      <td><a href="${repo.url}" target="_blank">Link</a></td>
+      <td>${repo.description || ""}</td>
+      <td>${repo.language || ""}</td>
+      <td>${repo.stars || 0}</td>
+      <td>${repo.updated_at ? repo.updated_at.slice(0,10) : ""}</td>
+      <td>${repo.topics ? repo.topics.join(", ") : ""}</td>
+      <td>${repo.license && repo.license.name ? repo.license.name : ""}</td>
+      <td>${repo.fork ? "Yes" : "No"}</td>
+      <td>${repo.open_issues_count || 0}</td>
+      <td>${repo.watchers_count || 0}</td>
+      <td>${repo.forks_count || 0}</td>
+    `;
 
-        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setRequestProperty("Authorization", "Bearer " + TOKEN);
-        conn.setRequestProperty("Accept", "application/vnd.github+json");
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(conn.getInputStream());
-        JsonNode items = root.get("items");
-
-        for (JsonNode item : items) {
-            Map<String, Object> repo = new LinkedHashMap<>();
-            repo.put("name", item.get("full_name").asText());
-            repo.put("url", item.get("html_url").asText());
-            repo.put("description", item.get("description").isNull() ? "" : item.get("description").asText());
-            repo.put("stars", item.get("stargazers_count").asInt());
-
-            // topics取得
-            List<String> topics = new ArrayList<>();
-            if (item.has("topics")) {
-                for (JsonNode t : item.get("topics")) {
-                    topics.add(t.asText());
-                }
-            }
-            repo.put("topics", topics);
-
-            results.add(repo);
-        }
-
-        mapper.writerWithDefaultPrettyPrinter()
-              .writeValue(new File("repos.json"), results);
-
-        System.out.println("repos.json generated: " + results.size());
-    }
+    tbody.appendChild(tr);
+  });
 }
+
+/* Starsソート */
+document.getElementById("sortStars").addEventListener("click", () => {
+  repos.sort((a, b) => starsDesc ? (b.stars || 0) - (a.stars || 0) : (a.stars || 0) - (b.stars || 0));
+  starsDesc = !starsDesc;
+  renderTable(repos);
+});
