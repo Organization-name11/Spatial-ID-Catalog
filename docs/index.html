@@ -2,22 +2,35 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Spatial ID Repositories</title>
+<title>Spatial ID OSS List</title>
+
 <style>
+body {
+  font-family: sans-serif;
+  margin: 2em;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
 }
+
 th, td {
   border: 1px solid #ccc;
   padding: 6px;
 }
+
 th {
   cursor: pointer;
   background: #f0f0f0;
 }
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
 </style>
 </head>
+
 <body>
 
 <h2>Spatial ID OSS List</h2>
@@ -32,19 +45,26 @@ th {
       <th onclick="sortTable(4)">Stars</th>
     </tr>
   </thead>
-  <tbody id="repoBody">
-  </tbody>
+  <tbody id="repoBody"></tbody>
 </table>
 
 <script>
 let repos = [];
 
-// JSON読み込み
-fetch("repos.json")
-  .then(res => res.json())
+/* 正しい JSON パス */
+fetch("data/catalog.json")
+  .then(res => {
+    if (!res.ok) throw new Error("catalog.json not found");
+    return res.json();
+  })
   .then(data => {
     repos = data;
     renderTable(repos);
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("repoBody").innerHTML =
+      "<tr><td colspan='5'>catalog.json を読み込めませんでした</td></tr>";
   });
 
 function renderTable(data) {
@@ -56,23 +76,24 @@ function renderTable(data) {
 
     tr.innerHTML = `
       <td>${index + 1}</td>
-      <td><a href="${repo.url}" target="_blank">${repo.name}</a></td>
+      <td><a href="${repo.url}" target="_blank">${repo.full_name}</a></td>
       <td>${repo.description || ""}</td>
       <td>${(repo.topics || []).join(", ")}</td>
-      <td>${repo.stars}</td>
+      <td>${repo.stars || 0}</td>
     `;
 
     tbody.appendChild(tr);
   });
 }
 
-// Stars or Repository sort
+/* ソート */
 let asc = true;
 function sortTable(colIndex) {
   if (colIndex === 4) {
-    repos.sort((a, b) => asc ? a.stars - b.stars : b.stars - a.stars);
-  } else if (colIndex === 1) {
-    repos.sort((a, b) => asc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+    repos.sort((a, b) => asc ? (a.stars||0) - (b.stars||0) : (b.stars||0) - (a.stars||0));
+  } 
+  else if (colIndex === 1) {
+    repos.sort((a, b) => asc ? a.full_name.localeCompare(b.full_name) : b.full_name.localeCompare(a.full_name));
   }
   asc = !asc;
   renderTable(repos);
