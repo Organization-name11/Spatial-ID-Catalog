@@ -1,98 +1,88 @@
-/* ===== Global ===== */
 body {
-  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-  background: #f4f6f9;
+  font-family: "Noto Sans JP", system-ui, sans-serif;
   margin: 0;
-  color: #222;
+  background: #f7f9fc;
 }
 
-a {
-  color: #2563eb;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* ===== Header ===== */
 header {
-  background: linear-gradient(135deg, #111827, #1f2937);
+  background: #003f88;
   color: white;
-  padding: 20px 40px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 1.5em 2em;
 }
 
 header h1 {
   margin: 0;
-  font-size: 26px;
 }
 
-/* ===== Warning Banner ===== */
+header p {
+  margin: 0.3em 0 0;
+  opacity: 0.9;
+}
+
 .warning {
-  background: #fff7cc;
-  border-left: 6px solid #facc15;
-  padding: 12px 20px;
-  margin: 20px 40px;
+  background: #fff3cd;
+  color: #856404;
+  padding: 1em 2em;
+  border-bottom: 1px solid #ffeeba;
   font-weight: bold;
-  border-radius: 6px;
 }
 
-/* ===== Main Container ===== */
 .container {
-  margin: 20px 40px;
-  background: white;
-  padding: 20px 24px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 2em;
 }
 
 h2 {
-  border-left: 6px solid #2563eb;
-  padding-left: 10px;
+  border-left: 6px solid #003f88;
+  padding-left: 0.5em;
 }
 
-/* ===== Table ===== */
+code {
+  background: #eef;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 14px;
-  margin-top: 10px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-size: 13px;
 }
 
-thead th {
-  background: #111827;
-  color: white;
-  padding: 10px;
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+th {
+  background: #e9f0f7;
+  cursor: pointer;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
-tbody td {
-  padding: 8px 10px;
-  border-bottom: 1px solid #e5e7eb;
+tr:nth-child(even) {
+  background: #f6f8fa;
 }
 
-tbody tr:nth-child(even) {
-  background: #f9fafb;
+a {
+  color: #003f88;
+  text-decoration: none;
 }
 
-tbody tr:hover {
-  background: #eef2ff;
+a:hover {
+  text-decoration: underline;
 }
 
-/* ===== Code Style ===== */
-code {
-  background: #f3f4f6;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 90%;
-}
-
-/* ===== Footer ===== */
 footer {
+  margin-top: 3em;
+  padding: 1em;
+  background: #003f88;
+  color: white;
   text-align: center;
   font-size: 12px;
-  color: #666;
-  margin: 20px;
 }
