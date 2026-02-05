@@ -2,81 +2,65 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>空間ID OSSカタログ</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 2em;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 1em;
-      font-size: 14px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 6px 10px;
-    }
-    th {
-      background-color: #f5f5f5;
-    }
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-    code {
-      background-color: #f0f0f0;
-      padding: 2px 4px;
-      font-size: 90%;
-      border-radius: 4px;
-    }
-  </style>
+  <title>Spatial ID OSS Catalog</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>空間ID OSSカタログ</h1>
+<header>
+  <h1>Spatial ID OSS Catalog</h1>
+  <p>Automatically collected GitHub repositories related to Spatial ID</p>
+</header>
 
-<p>
-本ページは、IPAが提唱する <strong>空間ID</strong> に関連するOSSを GitHubから自動収集し、表形式で公開するものです。
-</p>
+<div class="warning">
+  🚧 本ページは工事中です。掲載内容・分類基準は今後変更される可能性があります。
+</div>
 
-<h2>対象と検索条件</h2>
-<p>
-GitHub上のリポジトリを対象に、以下のキーワードが <code>リポジトリ名(name)</code>・<code>README</code>・<code>概要(description)</code>・<code>トピック(topics)</code> に含まれるリポジトリを収集しています：
-<code>"空間ID"</code>, <code>"空間ＩＤ"</code>, <code>"spatialid"</code>, <code>"ＳＰＡＴＩＡＬＩＤ"</code>,
-<code>"spatial-id"</code>, <code>"ＳＰＡＴＩＡＬーＩＤ"</code>
-</p>
+<div class="container">
+  <h2>概要</h2>
+  <p>
+    本ページは、空間IDに関連する OSS を GitHub から自動収集し、一覧化するカタログサイトです。
+    データは GitHub API を用いて定期的に更新されます。
+  </p>
 
-<h2>注意事項</h2>
-<ul>
-  <li>本カタログは自動収集により生成されています</li>
-  <li>掲載されているOSSは、IPAによる評価・推奨を意味するものではありません</li>
-</ul>
+  <h2>検索条件</h2>
+  <p>
+    以下のキーワードが <code>リポジトリ名</code>、<code>README</code>、<code>概要</code>、<code>Topics</code> に含まれるものを対象としています：
+  </p>
+  <code>空間ID, spatial-id, spatialid</code>
 
-<h2>OSS一覧</h2>
+  <h2>注意事項</h2>
+  <ul>
+    <li>本カタログは自動収集により生成されています</li>
+    <li>掲載されている OSS は評価・推奨を意味するものではありません</li>
+  </ul>
 
-<table id="catalog">
-  <thead>
-    <tr>
-      <th>リポジトリ</th>
-      <th>URL</th>
-      <th>概要</th>
-      <th>言語</th>
-      <th>★</th>
-      <th>最終更新</th>
-      <th>Topics</th>
-      <th>ライセンス</th>
-      <th>Fork</th>
-      <th>Issues</th>
-      <th>Watchers</th>
-      <th>Forks</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- JavaScriptで埋める -->
-  </tbody>
-</table>
+  <h2>OSS 一覧</h2>
+
+  <table id="catalog">
+    <thead>
+      <tr>
+        <th>Repository</th>
+        <th>URL</th>
+        <th>Description</th>
+        <th>Language</th>
+        <th>⭐ Stars</th>
+        <th>Updated</th>
+        <th>Topics</th>
+        <th>License</th>
+        <th>Fork</th>
+        <th>Issues</th>
+        <th>Watchers</th>
+        <th>Forks</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<footer>
+  Spatial ID OSS Catalog | Automatically generated from GitHub API
+</footer>
 
 <script>
 fetch('data/catalog.json')
@@ -89,10 +73,9 @@ fetch('data/catalog.json')
 
     data.forEach(repo => {
       const tr = document.createElement('tr');
-
       tr.innerHTML = `
         <td>${repo.full_name}</td>
-        <td><a href="${repo.url}" target="_blank">リンク</a></td>
+        <td><a href="${repo.url}" target="_blank">Link</a></td>
         <td>${repo.description || ''}</td>
         <td>${repo.language || ''}</td>
         <td>${repo.stars}</td>
@@ -104,14 +87,13 @@ fetch('data/catalog.json')
         <td>${repo.watchers_count || 0}</td>
         <td>${repo.forks_count || 0}</td>
       `;
-
       tbody.appendChild(tr);
     });
   })
   .catch(err => {
     console.error(err);
     const tbody = document.querySelector('#catalog tbody');
-    tbody.innerHTML = `<tr><td colspan="12">データの読み込みに失敗しました（Console を確認してください）</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="12">データの読み込みに失敗しました</td></tr>`;
   });
 </script>
 
